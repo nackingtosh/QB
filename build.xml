@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="" default="" basedir=".">
+	<!-- javaソース(パーサ)の出力先 -->
+    <property name="src" location="src/parser"/>
+	<!-- javaccの配置場所 -->
+	<property name="javacc.dir" location="/usr/share/java/" />
+	<!-- jjtreeファイルの場所 -->
+	<property name="jjt.file" location="src/test/test1.jjt"/>
+	<!-- jjファイルの配置場所 -->
+	<property name="jj.file" location="${src}/test1.jj"/>
+	<!-- コマンドの処理内容を記述 -->
+    <target name="build">
+        <delete dir="${src}" includes="*.*"/>
+        <jjtree target="${jjt.file}"
+            javacchome="${javacc.dir}"
+        	outputdirectory="${src}"/>
+        <javacc target="${jj.file}"
+            javacchome="${javacc.dir}"
+        	outputdirectory="${src}"/>
+    </target>
+</project>
