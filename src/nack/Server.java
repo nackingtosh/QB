@@ -17,11 +17,10 @@ public class Server {
 	    	serverAgent.waitClient();
 	    	// 接続したら、データをもらう
 	    	String data = (String)serverAgent.recv();
-	    	
-	    	DBExecutor executor = new DBExecutor( "com.mysql.jdbc.Driver", "jdbc:mysql://localhost/test", "root", "gorira$2845", data );
-	    	executor.executeSQL();
-	    	Result res = executor.getResult();
-	    	
+	    	DBConnection dbConn = new DBConnection( "com.mysql.jdbc.Driver", "jdbc:mysql://localhost/test", "root", "gorira$2845" );
+	    	dbConn.connect();
+	    	dbConn.execute( data );
+	    	Result res = dbConn.getResult();
 	    	serverAgent.send( res );
 	    	// リソースを閉じる
 	    	serverAgent.close();

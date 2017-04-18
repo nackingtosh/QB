@@ -19,7 +19,7 @@ public class Client {
             ClientAgent clientAgent = new ClientAgent( host, port );
             // データを送る
             clientAgent.send( "select * from student;" );
-            // シリアライズされたオブジェクトを受け取る   
+            // シリアライズされたオブジェクトを受け取る
             Result res = (Result)clientAgent.recv();
             // 結果を出力
             res.show();
@@ -27,9 +27,8 @@ public class Client {
             clientAgent.close();
         } catch (IOException e) {
         	e.printStackTrace();
-        }
-		catch ( ClassNotFoundException e ) {
+        } catch ( ClassNotFoundException e ) {
         	e.printStackTrace();
         }
-	  }
+	}
 }
