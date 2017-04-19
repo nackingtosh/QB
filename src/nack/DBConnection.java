@@ -36,4 +36,8 @@ public class DBConnection {
 	public Result getResult() {
 		return res;
 	}
+	
+	public void close() throws SQLException {
+		conn.close();
+	}
 }
